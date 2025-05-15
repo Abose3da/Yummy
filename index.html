@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Yummy</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css" />
+    <link rel="stylesheet" href="./css/styles.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <!-- nav and sidebar  -->
+    <aside id="slideBar" class="d-flex align-items-center nonSlide bg-black">
+      <nav class="min-vh-100">
+        <div
+          id=""
+          class="d-flex flex-column justify-content-between min-vh-100"
+        >
+          <div id="" class="overflow-hidden">
+            <ul id="myLinks" class="nav flex-column pt-3 glideDown">
+              <li class="nav-item">
+                <a id="search" class="nav-link" href="#" aria-current="page">
+                  <i class="fa-solid fa-magnifying-glass me-2"></i> Search
+                </a>
+              </li>
+              <li class="nav-item">
+                <a id="categories" class="nav-link" href="#">
+                  <i class="fa-solid fa-tags me-2"></i> Categories
+                </a>
+              </li>
+              <li class="nav-item">
+                <a  id="areas" class="nav-link" href="#">
+                  <i class="fa-solid fa-map-location-dot me-2"></i> Area
+                </a>
+              </li>
+              <li class="nav-item">
+                <a id="ingredient" class="nav-link" href="#">
+                  <i class="fa-solid fa-carrot me-2"></i> Ingredients
+                </a>
+              </li>
+              <li class="nav-item">
+                <a id="contactUs" class="nav-link" href="#">
+                  <i class="fa-solid fa-envelope me-2"></i> Contact Us
+                </a>
+              </li>
+            </ul>
+          </div>
+          <div class="sidebar-footer px-3 w-100">
+            <div class="social-icons mb-1">
+              <a href="#" class="text-white me-2"
+                ><i class="fa-brands fa-facebook"></i
+              ></a>
+              <a href="#" class="text-white me-2"
+                ><i class="fa-brands fa-twitter"></i
+              ></a>
+              <a href="#" class="text-white"
+                ><i class="fa-solid fa-globe"></i
+              ></a>
+            </div>
+            <p class="text-white small fs-8">
+              Copyright © 2025 All Rights Reserved.
+            </p>
+          </div>
+        </div>
+      </nav>
+      <div
+        class="my-rippon bg-white min-vh-100 d-flex align-items-center justify-content-between flex-column rounded-start-2"
+      >
+        <div class="d-flex align-content-center justify-content-center py-3">
+          <img class="my-icon" src="imgs_icons/tongue.png" alt="tongue" />
+        </div>
+        <button id="myBtnOpen" class="btn" type="button">
+          <i class="fa-solid fa-bars text-dark fs-3"></i>
+        </button>
+        <button id="myBtnClose" class="btn d-none" type="button">
+          <i class="fa-solid fa-x text-dark fs-3"></i>
+        </button>
+        <span
+          class="text-black d-flex flex-column align-items-center gap-1 justify-content-center pb-2 fs"
+        >
+          <a href=""><i class="fa-solid fa-globe text-black"></i></a>
+          <a href=""> <i class="fa-solid fa-share-nodes text-black"></i></a>
+        </span>
+      </div>
+    </aside>
+
+    <main id="main" class="">
+      <section id="mainPage">
+      
+        <section class="container py-5">
+          <div
+            id="randomMeals"
+            class="row row-cols-1 row-cols-md-2 row-cols-lg-3 row-cols-xl-4"
+          ></div>
+        </section>
+      </section>
+
+    </main>
+    <script src="./js/bootstrap.bundle.min.js"></script>
+    <script src="./js/main.js"></script>
+  </body>
+</html>

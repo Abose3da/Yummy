@@ -1,0 +1,196 @@
+* {
+  box-sizing: border-box;
+}
+
+:root {
+  --oWidth: 13rem;
+}
+
+#searchPage {
+  min-height: 100vh;
+  background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),
+    url(../imgs_icons/background.jpg);
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-position: right;
+  background-size: cover;
+}
+
+img {
+  width: 100%;
+  object-fit: cover;
+}
+.fs-8 {
+  font-size: 0.8rem;
+}
+
+aside {
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  width: var(--oWidth);
+  z-index: 99;
+}
+
+.my-icon {
+  width: 35px;
+  object-fit: cover;
+}
+
+.my-rippon {
+  width: 4rem;
+}
+
+.btn i:hover {
+  color: #f7b239 !important;
+}
+.active {
+  color: #ffc107 !important; /* Yellow when active */
+  background-color: transparent;
+  font-weight: bold;
+}
+.btn i {
+  transition: color 0.2s;
+}
+.nav-link:hover {
+  color: #f7b239 !important;
+}
+.nav-link {
+  color: white;
+  padding: 0 0 16px 16px;
+}
+
+.nonSlide {
+  transition: transform 0.3s;
+  transition-timing-function: linear;
+  transform: translateX(-10rem);
+}
+
+.slide {
+  transition: transform 0.3s;
+  transition-timing-function: linear;
+}
+
+.glideDown {
+  transform: translateY(100%);
+  transition: transform 0.5s;
+  transition-timing-function: ease-out;
+}
+
+.glideUp {
+  transition: transform 0.5s;
+  transition-timing-function: ease-out;
+}
+
+main {
+  margin-left: 3rem;
+}
+
+.mealLayer {
+  top: 0;
+  width: 100%;
+  background-color: rgba(255, 255, 255, 0.897);
+  height: 100%;
+  transform: translateY(101%);
+  transition: transform 0.5s;
+}
+.meal:hover .mealLayer {
+  transform: translateY(0);
+}
+
+#categoryPage {
+  min-height: 100vh;
+  background: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.9)),
+    url(../imgs_icons/categoryPage.jpg);
+  background-attachment: fixed;
+  background-size: cover;
+  background-position: right;
+}
+#areaPage {
+  min-height: 100vh;
+  background: linear-gradient(rgba(0, 0, 0, 1), rgba(0, 0, 0, 0.9)),
+    url(../imgs_icons/../imgs_icons/areaBg.jpg);
+  background-attachment: fixed;
+  background-size: cover;
+  background-position: right;
+}
+
+#area .col img {
+  width: 10rem;
+}
+#ingredients .col img {
+  width: 7rem;
+}
+
+#ingredientsPage {
+  min-height: 100vh;
+  background: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)),
+    url(../imgs_icons/../imgs_icons/ingredientsPage.jpg);
+  background-attachment: fixed;
+  background-size: cover;
+  background-position: right;
+}
+#contactUsPage {
+  min-height: 100vh;
+  background: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)),
+    url(../imgs_icons/../imgs_icons/contactUs.jpg);
+  background-attachment: fixed;
+  background-size: cover;
+  background-position: right;
+}
+
+#contactUsPage .container {
+  padding-top: 15rem;
+}
+
+#mainPage{
+  min-height: 100vh;
+  background: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)),
+    url(../imgs_icons/../imgs_icons/mainPage.jpg);
+  background-attachment: fixed;
+  background-size: cover;
+  background-position: right;
+}
+
+
+#mealDetailsPage {
+  background: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8));
+  min-height: 100vh;
+}
+
+.meal-details-img {
+  max-height: 500px;
+  object-fit: cover;
+}
+
+.ingredients-list {
+  columns: 2;
+  column-gap: 2rem;
+}
+
+@media (max-width: 768px) {
+  .ingredients-list {
+    columns: 1;
+  }
+}
+.meal {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.meal h3, .meal p {
+  width: 100%;
+}
+body {
+  background-color: #1a1a1a; 
+  color: #ffffff; 
+  min-height: 100vh;
+}
+
+#searchPage, #categoryPage, #areaPage, #ingredientsPage, #mealDetailsPage, #contactUsPage {
+  background-color: #1a1a1a;
+}
+
