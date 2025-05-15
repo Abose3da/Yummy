@@ -283,7 +283,7 @@ function displayArea(arr) {
       (area) => `
     <div class="col py-3 d-flex flex-column justify-content-center align-items-center">
       <div class="meal text-center" data-area="${area.strArea}">
-        <img class="img-fluid" src="../imgs_icons/flags/${area.strArea}.png" 
+        <img class="img-fluid" src="./imgsIcons/flags/${area.strArea}.png" 
              alt="${area.strArea} flag" />
         <h3 class="text-white pt-2 text-center">${area.strArea}</h3>
       </div>
@@ -354,7 +354,7 @@ function displayIngredients(arr) {
         }.png" 
              alt="${
                ing.strIngredient
-             }" onerror="this.src='../imgs_icons/Ingredient.png'" />
+             }" onerror="this.src='../imgsIcons/Ingredient.png'" />
         <h3 class="text-white pt-2 text-center">${ing.strIngredient}</h3>
         <p class="text-warning text-center">${
           ing.strDescription?.split(" ", 20).join(" ") || ""

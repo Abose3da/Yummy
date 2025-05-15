@@ -9,7 +9,7 @@
 #searchPage {
   min-height: 100vh;
   background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),
-    url(../imgs_icons/background.jpg);
+    url(../imgsIcons/background.jpg);
   background-repeat: no-repeat;
   background-attachment: fixed;
   background-position: right;
@@ -102,7 +102,7 @@ main {
 #categoryPage {
   min-height: 100vh;
   background: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.9)),
-    url(../imgs_icons/categoryPage.jpg);
+    url(../imgsIcons/categoryPage.jpg);
   background-attachment: fixed;
   background-size: cover;
   background-position: right;
@@ -110,7 +110,7 @@ main {
 #areaPage {
   min-height: 100vh;
   background: linear-gradient(rgba(0, 0, 0, 1), rgba(0, 0, 0, 0.9)),
-    url(../imgs_icons/../imgs_icons/areaBg.jpg);
+    url(../imgsIcons/../imgsIcons/areaBg.jpg);
   background-attachment: fixed;
   background-size: cover;
   background-position: right;
@@ -126,7 +126,7 @@ main {
 #ingredientsPage {
   min-height: 100vh;
   background: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)),
-    url(../imgs_icons/../imgs_icons/ingredientsPage.jpg);
+    url(../imgsIcons/../imgsIcons/ingredientsPage.jpg);
   background-attachment: fixed;
   background-size: cover;
   background-position: right;
@@ -134,7 +134,7 @@ main {
 #contactUsPage {
   min-height: 100vh;
   background: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)),
-    url(../imgs_icons/../imgs_icons/contactUs.jpg);
+    url(../imgsIcons/../imgsIcons/contactUs.jpg);
   background-attachment: fixed;
   background-size: cover;
   background-position: right;
@@ -147,7 +147,7 @@ main {
 #mainPage{
   min-height: 100vh;
   background: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)),
-    url(../imgs_icons/../imgs_icons/mainPage.jpg);
+    url(../imgsIcons/../imgsIcons/mainPage.jpg);
   background-attachment: fixed;
   background-size: cover;
   background-position: right;
