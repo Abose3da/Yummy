@@ -42,8 +42,19 @@ function toggleSidebar() {
   }
 }
 
+// Loading indicator
+function showLoading(container = main) {
+  container.innerHTML = `
+    <div class="text-center min-vh-100 min-vw-100 z-3 d-flex align-items-center justify-content-center  py-5">
+      <div class="spinner-border text-warning"></div>
+      <p class="text-white mt-2">Loading...</p>
+    </div>
+  `;
+}
+
 // Main page
 async function mainPageload() {
+  showLoading(randomMeals);
   try {
     const response = await fetch(
       "https://www.themealdb.com/api/json/v1/1/search.php?s="
@@ -90,11 +101,11 @@ function displaySearchPage() {
     <section id="searchPage" class="bg-dark text-white">
       <section id="searchContainer" class="container py-5 d-flex justify-content-between">
         <div class="form-floating mb-3 w-50 me-2">
-          <input type="text" class="form-control  text-white" id="searchNameInput" placeholder="Search by name">
+          <input type="text" class="form-control  text-dark" id="searchNameInput" placeholder="Search by name">
           <label for="searchNameInput" class="text-dark">Search by name</label>
         </div>
         <div class="form-floating mb-3 w-50">
-          <input type="text" class="form-control  text-white" id="searchLetterInput" placeholder="Search by first letter" maxlength="1">
+          <input type="text" class="form-control  text-dark" id="searchLetterInput" placeholder="Search by first letter" maxlength="1">
           <label for="searchLetterInput" class="text-dark">Search by first letter</label>
         </div>
       </section>
@@ -119,6 +130,7 @@ function displaySearchPage() {
 
     const handleSearch = debounce(async (type, value) => {
       if (!value.trim()) return;
+      showLoading(meals);
       try {
         const url =
           type === "name"
@@ -148,7 +160,8 @@ function displaySearchPage() {
 function displaySearchResults(arr) {
   const meals = document.getElementById("searchResults");
   if (!arr) {
-    meals.innerHTML = "<p class='text-white'>No meals found</p>";
+    meals.innerHTML =
+      "<p class='text-danger fs-4 fw-bolder text-center w-100 py-5'>No meals found</p>";
     return;
   }
 
@@ -191,6 +204,7 @@ function displayCategoriesPage() {
 
 async function getCategories() {
   const Category = document.getElementById("Category");
+  showLoading(Category);
   try {
     const response = await fetch(
       "https://www.themealdb.com/api/json/v1/1/categories.php"
@@ -240,7 +254,7 @@ function displayCategories(arr) {
   });
 }
 
-// Areas page - Fixed this section
+// Areas page
 areas.addEventListener("click", handleNavigationClick(displayAreasPage));
 
 function displayAreasPage() {
@@ -258,6 +272,7 @@ function displayAreasPage() {
 
 async function getArea() {
   const areaElement = document.getElementById("area");
+  showLoading(areaElement);
   try {
     const response = await fetch(
       "https://www.themealdb.com/api/json/v1/1/list.php?a=list"
@@ -321,6 +336,7 @@ function displayIngredientPage() {
 
 async function getIngredients() {
   const ingredientsElement = document.getElementById("ingredients");
+  showLoading(ingredientsElement);
   try {
     const response = await fetch(
       "https://www.themealdb.com/api/json/v1/1/list.php?i=list"
@@ -422,14 +438,9 @@ async function showMealsByIngredient(ingredient) {
   }
 }
 
-function showLoading() {
-  main.innerHTML =
-    '<div class="text-center py-5"><div class="spinner-border text-warning"></div></div>';
-}
-
 function displayMealList(meals, title) {
   if (!meals || meals.length === 0) {
-    main.innerHTML = `<p class="text-white text-center py-5">No meals found</p>`;
+    main.innerHTML = `<p class="text-danger fs-4 fw-bolder text-center  py-5">No meals found</p>`;
     return;
   }
 
@@ -607,13 +618,29 @@ function navigateBack() {
       displayAreasPage();
     } else if (previousPage.type === "ingredients") {
       displayIngredientPage();
-    } else if (previousPage.type === "search") {
-      displaySearchPage();
+    } else if (previousPage.type === "details") {
+      // If coming from meal details, go back to the previous list view
+      if (navigationHistory.length > 0) {
+        const listPage = navigationHistory[navigationHistory.length - 1];
+        if (listPage.type === "category") {
+          showMealsByCategory(listPage.id);
+        } else if (listPage.type === "area") {
+          showMealsByArea(listPage.id);
+        } else if (listPage.type === "ingredient") {
+          showMealsByIngredient(listPage.id);
+        } else {
+          displaySearchPage();
+        }
+      } else {
+        displaySearchPage();
+      }
     } else {
-      mainPageload();
+      // Default back to search page
+      displaySearchPage();
     }
   } else {
-    mainPageload();
+    // If no history, go to search page
+    displaySearchPage();
   }
 }
 
@@ -672,6 +699,7 @@ function setupContactFormValidation() {
   const rePass = document.getElementById("rePass");
   const submitBtn = document.getElementById("submitBtn");
 
+  // Initialize validation states
   const validationStates = {
     fName: false,
     email: false,
@@ -680,6 +708,8 @@ function setupContactFormValidation() {
     pass: false,
     rePass: false,
   };
+
+  submitBtn.disabled = true;
 
   const validateField = (field, regex, errorElement) => {
     const isValid = regex.test(field.value.trim());
@@ -694,6 +724,7 @@ function setupContactFormValidation() {
         /^[a-zA-Z\u0600-\u06FF\s]+$/,
         fName.nextElementSibling
       );
+      return validationStates.fName;
     },
     email: () => {
       validationStates.email = validateField(
@@ -701,6 +732,7 @@ function setupContactFormValidation() {
         /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/,
         email.nextElementSibling
       );
+      return validationStates.email;
     },
     pNum: () => {
       validationStates.pNum = validateField(
@@ -708,6 +740,7 @@ function setupContactFormValidation() {
         /^\d{11}$/,
         pNum.nextElementSibling
       );
+      return validationStates.pNum;
     },
     age: () => {
       validationStates.age = validateField(
@@ -715,6 +748,7 @@ function setupContactFormValidation() {
         /^(0?[1-9]|[1-9][0-9]|1[01][0-9]|120)$/,
         age.nextElementSibling
       );
+      return validationStates.age;
     },
     pass: () => {
       validationStates.pass = validateField(
@@ -722,12 +756,22 @@ function setupContactFormValidation() {
         /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/,
         pass.nextElementSibling
       );
+      return validationStates.pass;
     },
     rePass: () => {
       const isValid = pass.value === rePass.value;
       rePass.nextElementSibling.classList.toggle("d-none", isValid);
       validationStates.rePass = isValid;
+      return validationStates.rePass;
     },
+  };
+
+  const checkAllValid = () => {
+    return Object.values(validationStates).every((state) => state);
+  };
+
+  const updateButtonState = () => {
+    submitBtn.disabled = !checkAllValid();
   };
 
   Object.keys(validations).forEach((field) => {
@@ -736,26 +780,21 @@ function setupContactFormValidation() {
       if (field === "pass") {
         validations.rePass();
       }
+      updateButtonState();
     });
   });
 
+  updateButtonState();
+
   submitBtn.addEventListener("click", function (e) {
-    Object.keys(validations).forEach((field) => validations[field]());
-
-    const isFormValid = Object.values(validationStates).every((state) => state);
-
-    if (!isFormValid) {
+    if (!checkAllValid()) {
       e.preventDefault();
       alert("Please correct the errors in the form before submitting.");
       return;
     }
-
     alert("Form submitted successfully!");
   });
-
-  Object.keys(validations).forEach((field) => validations[field]());
 }
-
 // Navigation click handler
 function handleNavigationClick(handlerFunction) {
   return function () {

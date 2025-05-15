@@ -194,3 +194,15 @@ body {
   background-color: #1a1a1a;
 }
 
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.spinner-border {
+  width: 3rem;
+  height: 3rem;
+  border-width: 0.25em;
+  animation: spin 0.75s linear infinite;
+}
